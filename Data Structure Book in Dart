@@ -1,0 +1,38 @@
+// 1: Reverse a List
+void reverseList(List<dynamic> inputList) {
+  for (int i = inputList.length - 1; i >= 0; i--) {
+    print(inputList[i]);
+  }
+}
+
+//2: Balance the Parentheses
+bool balanceParentheses(String inputString) {
+  List<String> stack = [];
+
+  for (int i = 0; i < inputString.length; i++) {
+    String currentChar = inputString[i];
+
+    if (currentChar == '(') {
+      stack.add(currentChar);
+    } else if (currentChar == ')') {
+      if (stack.isEmpty) {
+        return false;
+      }
+      stack.removeLast();
+    }
+  }
+
+  return stack.isEmpty;
+}
+
+void main() {
+  List<dynamic> myList = [1, 2, 3, 4, 5];
+  print(" 1: Reverse a List");
+  reverseList(myList);
+
+  String expression1 = "(a + b) - (c * d)";
+  String expression2 = "((a + b) - c * d";
+  print("\n2: Balance the Parentheses");
+  print("Expression 1 is balanced: ${balanceParentheses(expression1)}");
+  print("Expression 2 is balanced: ${balanceParentheses(expression2)}");
+}
